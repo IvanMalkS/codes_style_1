@@ -36,8 +36,10 @@ int EvaluateExpression(const string& expression);
  */
 // FIX ME плохой нейминг
 // int element(string str) {
-int EvaluateElement(string& expression) {
-    if (expression[0] == 'M' || expression[0] == 'm') {
+int EvaluateElement(string& expression)
+{ // FIX ME: Фигурная скобка должна быть на новой строке (строка 39, 41, 55, 66, 68, 72, 76, 84, 92, 97, 105).
+    if (expression[0] == 'M' || expression[0] == 'm')
+    {
         return EvaluateExpression(expression.substr(2, expression.size() - 3));
     }
     return stoi(expression);
@@ -50,7 +52,8 @@ int EvaluateElement(string& expression) {
  */
 // FIX ME плохой неймиг
 // int calc(string str) {
-int EvaluateExpression(string& expression) {
+int EvaluateExpression(string& expression)
+{
     // FIX ME плохой нейминг
     // int i = 0;
     // int level = 0;
@@ -60,31 +63,38 @@ int EvaluateExpression(string& expression) {
     int nesting_level = 0;
     int comma_position = -1;
 
-    while (current_position < expression.size()) {
-        if (expression[current_position] == '(') {
+    while (current_position < expression.size())
+    {
+        if (expression[current_position] == '(')
+        {
             ++nesting_level;
         }
-        if (expression[current_position] == ')') {
+        if (expression[current_position] == ')')
+        {
             --nesting_level;
         }
-        if (nesting_level == 1 && expression[current_position] == ',') {
+        if (nesting_level == 1 && expression[current_position] == ',')
+        {
             comma_position = current_position;
             break;
         }
         ++current_position;
     }
 
-    if (comma_position == -1) {
+    if (comma_position == -1)
+    {
         return EvaluateElement(expression);
     }
 
     const string left_expression = expression.substr(0, comma_position);
     const string right_expression = expression.substr(comma_position + 1);
 
-    if (expression[0] == 'M') {
+    if (expression[0] == 'M')
+    {
         return max(EvaluateExpression(left_expression),
                    EvaluateExpression(right_expression));
-    } else if (expression[0] == 'm') {
+    } else if (expression[0] == 'm')
+    {
         return min(EvaluateExpression(left_expression),
                    EvaluateExpression(right_expression));
     }
@@ -92,7 +102,8 @@ int EvaluateExpression(string& expression) {
     return 0;
 }
 
-int main() {
+int main()
+{
     setlocale(LC_ALL, "Russian");
     // FIX ME плохой нейминг
     // string str;
