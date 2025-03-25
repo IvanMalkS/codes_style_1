@@ -3,7 +3,7 @@ project(codes_style)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(codes_style main.cpp
+add_executable(codes_style
         1/1.cpp
         1/knapsack.cpp
         1/knapsack.h
